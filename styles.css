@@ -1,0 +1,29 @@
+* ==========================================
+   1. RESET & BASE STYLES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+html {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1c1a17; /* Dark warm charcoal */
+    color: #e8e3d9; /* Warm off-white prose */
+}
+ 
+body {
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+ 
+a {
+    color: #8fa091; /* Brighter sage for contrast on dark bg */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #c9a876; /* Gold hover */
+}
