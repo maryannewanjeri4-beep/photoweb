@@ -54,7 +54,7 @@ a:hover {
     background: #0a0908;
     text-align: center;
     padding: 2.5rem 1rem;
-    border-bottom: 4px solid var(--gold);
+    border-bottom: 4px solid var(--gold);/* the decorated elena photography part*/
 }
 
 /* The real visible brand name — cursive font, gold, with a soft
@@ -68,10 +68,10 @@ a:hover {
     animation: logo-glow 4s ease-in-out infinite;
 }
 
-/* The plain <h1> stays in the HTML for SEO/screen readers, but is
+/* The plain <h1> stays in the HTML for SEO/screen readers(blind), but is
    visually hidden so it doesn't duplicate the cursive logo on screen. */
 .site-header h1 {
-    position: absolute;
+    position: absolute;/*uses absolute to keeep the h1 completely out of sight but does not interfere*/
     width: 1px;
     height: 1px;
     overflow: hidden;
@@ -79,7 +79,7 @@ a:hover {
 }
 
 .logo-sub {
-    display: block;
+    display: block;/*forces logo into its own line*/
     font-size: .8rem;
     letter-spacing: 3px;
     color: #c9c3b6;
@@ -87,11 +87,11 @@ a:hover {
     text-transform: uppercase;
 }
 
-.main-nav ul {
+.main-nav ul {/*lists*/
     list-style: none;
-    display: flex;
+    display: flex;/*flexbox for alignement*/
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;/*allows links to fall to a new line on a narrower screen*/
     gap: 1.6rem;
     margin-top: 1.5rem;
 }
@@ -105,7 +105,7 @@ a:hover {
     padding-bottom: .3rem;
 }
 
-.main-nav a::after {
+.main-nav a::after {/*an animated underline for the links without adding extra html tags*/
     content: '';
     position: absolute;
     left: 0;
@@ -122,6 +122,7 @@ a:hover {
 }
 
 /* ===== 3. SECTION LAYOUT ===== */
+/*section  styles for the dark areas*/
 section {
     max-width: 1000px;
     margin: 3rem auto;
@@ -150,7 +151,7 @@ section h2::after {
 
 /* Bright sections invert the palette (dark text on cream) for real
    contrast between sections rather than one flat dark tone throughout. */
-.section-bright {
+.section-bright {/* applies rules for the bright sectins from above*/
     background: var(--bg-bright);
     color: var(--ink-dark);
     border-radius: 8px;
@@ -161,7 +162,7 @@ section h2::after {
     color: var(--ink-dark);
 }
 
-/* ===== 4. GALLERY — spinning border + sparkle ===== */
+/* ===== 4. GALLERY  */
 .gallery-grid {
     list-style: none;
     display: grid;
@@ -174,18 +175,18 @@ section h2::after {
     border-radius: 6px;
     padding: 3px;
     background: #0d0c0a;
-    overflow: hidden;
+    overflow: hidden;/*masks everything hidden outside the borders*/
 }
 
 /* ANIMATION 1 — rotating gradient ring.
    An oversized conic-gradient spins behind the card; only the
    card's 3px padding gap shows it, so it reads as a moving border. */
 .gallery-item::before {
-    content: '';
+    content: '';/*pseudo element*/
     position: absolute;
     inset: -40%;
     background: conic-gradient(from 0deg, transparent 0deg, var(--gold) 20deg, transparent 60deg, transparent 300deg, var(--sage) 340deg, transparent 360deg);
-    animation: spin-border 5s linear infinite;
+    animation: spin-border 5s linear infinite;/*repeatedly in a 5s loop*/
 }
 
 .gallery-item-inner {
@@ -194,15 +195,15 @@ section h2::after {
     border-radius: 4px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;/*flexbox layout to align from top to bottom*/
 }
 
 .gallery-item img {
     width: 100%;
     height: 170px;
-    object-fit: cover;
+    object-fit: cover;/*crops the image slightly to fit the bound box*/
     filter: grayscale(20%) brightness(.9);
-    transition: filter .4s ease,
+    transition: filter .4s ease,/*smooth transition of colours*/
         transform .4s ease;
 }
 
@@ -232,8 +233,8 @@ section h2::after {
     border-radius: 50%;
     background: #fdf6e3;
     box-shadow: 0 0 6px 1px #fdf6e3;
-    opacity: 0;
-    animation: twinkle 3.5s ease-in-out infinite;
+    opacity: 0;/*forces the frame to be completely transparent and invisible when the page loads*/
+    animation: twinkle 3.5s ease-in-out infinite;/*the sparkle effect appears and fades ina span of 2.5s*/
 }
 
 .gallery-item-inner::before {
@@ -248,7 +249,7 @@ section h2::after {
     animation-delay: 1.6s;
 }
 
-.gallery-item:nth-child(even) .gallery-item-inner::before {
+.gallery-item:nth-child(even) .gallery-item-inner::before {/*Targets are 2nd 4th and 6th items in the gallery where their animation starts at 0.8s*/
     animation-delay: .9s;
 }
 
@@ -271,7 +272,7 @@ section h2::after {
     flex-shrink: 0;
 }
 
-.quote {
+.quote {/*words said by elena quotes and have a green bar*/
     font-style: italic;
     margin: 1rem 0;
     padding-left: 1.1rem;
@@ -318,15 +319,15 @@ form textarea:focus {
    A light diagonal streak (::after) sits just off-canvas to the
    left and slides across on hover, like light catching foil. */
 form button[type="submit"] {
-    position: relative;
-    overflow: hidden;
-    justify-self: start;
+    position: relative;/*anchor point for an animated sheen reflection*/
+    overflow: hidden;/*prevent contents from spilling out*/
+    justify-self: start;/*aligns button to the left side to prevent it from overstretching*/
     padding: .7rem 1.8rem;
     border: none;
     border-radius: 4px;
     background: #8a744f;
     color: #fff;
-    text-transform: uppercase;
+    text-transform: uppercase;/*forces all texts to caps*/
     letter-spacing: 2px;
     font-weight: 600;
     cursor: pointer;
@@ -345,7 +346,7 @@ form button[type="submit"]::after {
 }
 
 form button[type="submit"]:hover::after {
-    animation: shine-sweep .8s ease forwards;
+    animation: shine-sweep .8s ease forwards;/*when touched with the cursor it shimmers for 8s*/
 }
 
 form button[type="submit"]:hover {
