@@ -1,4 +1,4 @@
-*==========================================1. RESET & BASE STYLES==========================================*/ * {
+*==========================================1. RESET & BASE STYLES==========================================*/ */*PART A*/ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,3 +32,69 @@ a:hover {
     color: #c9a876;
     /* Gold hover */
 }
+* ==========================================
+   2. HEADER & NAVIGATION
+   ========================================== */
+ 
+.site-header {
+    background-color: #0f0e0d; /* Slightly darker than the page
+        background so the header reads as a distinct band, not just
+        more page. */
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem; /* Generous vertical padding gives the header
+        breathing room — a cramped header feels unfinished. */
+    border-bottom: 4px solid #8a744f; /* A thin accent line separates
+        header from content without needing a full drop shadow. */
+}
+ 
+.site-header h1,
+.logo-name {
+    font-size: 1.9rem;
+    letter-spacing: 4px; /* Wide letter spacing on all-caps text reads
+        as more elegant/editorial than tightly-packed capitals. */
+    font-weight: 300; /* A lighter weight (thin) suits the letter
+        spacing above — bold + wide spacing looks cluttered together. */
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+ 
+.main-nav ul {
+    list-style: none; /* Removes the default bullet points — this is
+        a navigation bar, not a list of facts. */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* If the nav items don't fit on one line on a
+        small screen, they wrap instead of overflowing or shrinking
+        unreadably small. */
+    gap: 1.75rem;
+}
+ 
+.main-nav a {
+    color: #d6d0c4;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    padding: 0.5rem 0;
+    position: relative; /* Required so the ::after underline below can
+        be positioned relative to this link, not the whole page. */
+}
+ 
+/* This invisible strip starts at 0 width and grows to 100% on hover —
+   an animated underline feels more polished than a default browser
+   underline that's just always on. */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #c9a876;
+    transition: width 0.3s ease;
+}
+ 
+.main-nav a:hover::after {
+    width: 100%;
+}
+ 
