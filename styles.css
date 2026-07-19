@@ -394,4 +394,50 @@ form label {
             transform: scale(0.98);
             
         }
-        
+  /* ==========================================
+   7. FOOTER
+   ========================================== */
+ 
+footer {
+    background-color: #0f0e0d; /* Matches the header color */
+    color: #776f61;
+    text-align: center;
+    padding: 1.8rem 1rem;
+    margin-top: 4rem; /* Extra space above separates the footer from
+        whatever content precedes it (usually the contact form). */
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-top: 1px solid #26221d;
+}
+ 
+/* ==========================================
+   8. KEYFRAMES
+   ========================================== */
+ 
+/* Powers the rotating gradient border above — a full 360-degree turn,
+   looped forever. */
+@keyframes spin-border {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+ 
+/* Powers the sparkle dots — fades in, holds briefly at full brightness
+   and slightly larger size, then fades back out. */
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.6); }
+    50%      { opacity: 1; transform: scale(1.2); }
+}
+ 
+/* Accessibility: some visitors have "reduce motion" turned on at the
+   OS level (often due to vestibular disorders, motion sensitivity, or
+   just personal preference). This respects that setting by turning
+   off the spinning and twinkling entirely for them, without needing
+   any JavaScript to detect it. */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-item::before,
+    .gallery-item-inner::before,
+    .gallery-item-inner::after {
+        animation: none;
+    }
+}
+       
