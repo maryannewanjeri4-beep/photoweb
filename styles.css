@@ -1,466 +1,182 @@
-/*==========================================1. RESET & BASE STYLES==========================================*/ *
+/* =====================================================
+   FONTS
+   'Great Vibes' = cursive script for the logo wordmark.
+   Add this line in your HTML <head> if it isn't there:
+   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+   ===================================================== */
 
-/*PART A*/
-    {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /*This is to ensure there is no overflow in the size of the box*/
+/* ===== 1. RESET & PALETTE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg-dark: #14120f;     /* near-black sections */
+    --bg-bright: #f6ede0;   /* cream sections, for contrast */
+    --ink-light: #ece6da;   /* text on dark bg */
+    --ink-dark: #2b2620;    /* text on bright bg */
+    --gold: #d9ac6e;        /* brighter gold, pops against both bg's */
+    --sage: #8fae93;
 }
 
 html {
     scroll-behavior: smooth;
-    /*Clicking the nav bar ensures the page scrolls smoothly instead of just jumping to it*/
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /*If the visitor system does not have segoe font it can fall back to similar looking fonts*/
-    background-color: #1c1a17;
-    /* Dark warm charcoal */
-    color: #e8e3d9;
-    /* Warm off-white prose for smooth contrast */
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background: var(--bg-dark);
+    color: var(--ink-light);
 }
+body { line-height: 1.6; overflow-x: hidden; }
+a { color: var(--sage); text-decoration: none; transition: color .3s ease; }
+a:hover { color: var(--gold); }
 
-body {
-    line-height: 1.6;
-    /*to improve the lines readability*/
-    overflow-x: hidden;
-    /*/* Prevents an accidental horizontal scroll if any element slightly overflows*/
-}
-
-a {
-    color: #8fa091;
-    /* Brighter sage for contrast on dark bg */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #c9a876;
-    /* Gold hover */
-}
-
-/*==========================================2. HEADER & NAVIGATION==========================================*/ .site-header {
-    background-color: #0f0e0d;
-    color: #ffffff;
+/* ===== 2. HEADER + CURSIVE LOGO ===== */
+.site-header {
+    background: #0a0908;
     text-align: center;
     padding: 2.5rem 1rem;
-    /* Generous vertical padding gives the header
-        breathing room — a cramped header feels unfinished. */
-    border-bottom: 4px solid #8a744f;
-    /* A thin accent line separates
-        header from content without needing a full drop shadow. */
+    border-bottom: 4px solid var(--gold);
 }
 
-.site-header h1,
+/* The real visible brand name — cursive font, gold, with a soft
+   pulsing glow (see .logo-glow keyframe) so it feels like a
+   signature rather than a plain heading. */
 .logo-name {
-    font-size: 1.9rem;
-    letter-spacing: 4px;
-    font-weight: 300;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    display: inline-block;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--gold);
+    animation: logo-glow 4s ease-in-out infinite;
 }
 
-.main-nav ul {
-    list-style: none;
-    /* Removes the default bullet points — this is
-                      a navigation bar, not a list of facts. */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.75rem;
-}
-
-.main-nav a {
-    color: #d6d0c4;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    padding: 0.5rem 0;
-    position: relative;
-    /* Required so the ::after underline below can
-        be positioned relative to this link, not the whole page. */
-}
-
-/* This invisible strip starts at 0 width and grows to 100% on hover —
-   an animated underline feels more polished than a default browser
-   underline that's just always on. */
-.main-nav a::after {
-    content: '';
+/* The plain <h1> stays in the HTML for SEO/screen readers, but is
+   visually hidden so it doesn't duplicate the cursive logo on screen. */
+.site-header h1 {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #c9a876;
-    transition: width 0.3s ease;
-}
-
-.main-nav a:hover::after {
-    width: 100%;
-
-}
-
-/* ==================================
-PHOTOS GRID
-   ========================================== */
-
-section {
-    max-width: 1000px;
-    margin: 3.5rem auto;
-    padding: 0 2rem;
-}
-
-section h2 {
-    font-size: 1.7rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 1.5rem;
-    position: relative;
-    /* Anchors the ::after accent line below. */
-    padding-bottom: 0.5rem;
-    color: #f0ece2;
-}
-
-
-content: {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 46px;
-height: 2px;
-background-color: #c9a876;
-}
-
-
-/*==========================================4. FAVORITE PHOTOS GRID==========================================*/ .gallery-grid {
-    list-style: none;
-    display: grid;
-    /* auto-fit + minmax lets the grid decide how many columns fit:
-        */
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
-}
-
-/ .gallery-item {
-    position: relative;
-    /* So the ::before gradient is positioned
-        relative to this card, not the whole page. */
-    border-radius: 6px;
-    padding: 3px;
-    background: #100f0d;
+    width: 1px; height: 1px;
     overflow: hidden;
-    /* Clips the oversized ::before gradient (see
-        below) to the rounded corners of this card. */
+    clip: rect(0,0,0,0);
 }
 
-/ .gallery-item::before {
+.logo-sub {
+    display: block;
+    font-size: .8rem;
+    letter-spacing: 3px;
+    color: #c9c3b6;
+    margin-top: .25rem;
+    text-transform: uppercase;
+}
+
+.main-nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.6rem; margin-top: 1.5rem; }
+.main-nav a { position: relative; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; color: #d6d0c4; padding-bottom: .3rem; }
+.main-nav a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s ease; }
+.main-nav a:hover::after { width: 100%; }
+
+/* ===== 3. SECTION LAYOUT ===== */
+section { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; }
+section h2 { position: relative; font-size: 1.6rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.3rem; padding-bottom: .5rem; }
+section h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 44px; height: 2px; background: var(--gold); }
+
+/* Bright sections invert the palette (dark text on cream) for real
+   contrast between sections rather than one flat dark tone throughout. */
+.section-bright { background: var(--bg-bright); color: var(--ink-dark); border-radius: 8px; padding: 2rem; }
+.section-bright h2 { color: var(--ink-dark); }
+
+/* ===== 4. GALLERY — spinning border + sparkle ===== */
+.gallery-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.3rem; }
+
+.gallery-item { position: relative; border-radius: 6px; padding: 3px; background: #0d0c0a; overflow: hidden; }
+
+/* ANIMATION 1 — rotating gradient ring.
+   An oversized conic-gradient spins behind the card; only the
+   card's 3px padding gap shows it, so it reads as a moving border. */
+.gallery-item::before {
     content: '';
     position: absolute;
     inset: -40%;
-    /* Deliberately oversized (larger than the card) so
-        that when it spins, 
-        
-       
-        
-        transparent 60deg,
-        transparent 300deg,
-        #8fa091 340deg,    /* sage streak, so two colors sweep by
-                               per rotation instead of one */
-    transparent 360deg);
+    background: conic-gradient(from 0deg, transparent 0deg, var(--gold) 20deg, transparent 60deg, transparent 300deg, var(--sage) 340deg, transparent 360deg);
     animation: spin-border 5s linear infinite;
-    /* linear = constant
-        speed, no easing — a spinning effect should look mechanical,*/
-
 }
 
+.gallery-item-inner { position: relative; background: #26221d; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
+.gallery-item img { width: 100%; height: 170px; object-fit: cover; filter: grayscale(20%) brightness(.9); transition: filter .4s ease, transform .4s ease; }
+.gallery-item:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.03); }
+.gallery-item h3 { text-align: center; padding: .6rem 0; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; font-size: .9rem; }
 
-.gallery-item-inner {
-    position: relative;
-    /* Keeps this above the ::before gradient in
-        the stacking order, and anchors the sparkle dots below. */
-    background: #26221d;
-    border-radius: 4px;
-    overflow: hidden;
-    /* Keeps the sparkle dots and the image's zoom
-        effect from spilling outside the card's rounded corners. */
-    display: flex;
-    flex-direction: column;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    /* Crops the image to fill this exact box
-        without stretching or squashing it*/
-    filter: grayscale(20%) brightness(0.9);
-    /* Slightly desaturated
-        and dimmed by default, so the full-color hover state below
-        feels like a intentional "reveal" rather than no change at all. */
-    transition: filter 0.4s ease, transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-    filter: grayscale(0%) brightness(1);
-    /* Full color on hover — a
-        reward for the visitor's interaction. */
-    transform: scale(1.03);
-    /* A subtle zoom (not a big jump) implies
-        depth without feeling gimmicky. */
-}
-
-.gallery-item h3 {
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.95rem;
-    text-align: center;
-    padding: 0.7rem 0;
-    color: #f0ece2;
-}
-
-/* Sparkle flecks: two tiny glowing dots per card. Using ::before and
-   ::after means zero extra HTML elements are needed  */
-.gallery-item-inner::after,
-.gallery-item-inner::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #fdf6e3;
-    border-radius: 50%;
-    /* Makes the square into a dot. */
-    box-shadow: 0 0 6px 1px #fdf6e3;
-    /* The soft glow around the dot —
-        without this it would just look like a small dot, not a spark
-        of light. */
-    opacity: 0;
-    /* Starts invisible; the animation fades it in and out. */
+/* ANIMATION 2 — sparkle flecks.
+   Two ::before/::after dots per card fade in/out on staggered
+   delays, purely via CSS (no extra HTML elements needed). */
+.gallery-item-inner::before, .gallery-item-inner::after {
+    content: ''; position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: #fdf6e3; box-shadow: 0 0 6px 1px #fdf6e3; opacity: 0;
     animation: twinkle 3.5s ease-in-out infinite;
 }
+.gallery-item-inner::before { top: 14%; left: 20%; animation-delay: .3s; }
+.gallery-item-inner::after { top: 60%; left: 78%; animation-delay: 1.6s; }
+.gallery-item:nth-child(even) .gallery-item-inner::before { animation-delay: .9s; }
+.gallery-item:nth-child(even) .gallery-item-inner::after { animation-delay: 2.2s; }
 
-.gallery-item-inner::before {
-    top: 14%;
-    left: 20%;
-    animation-delay: 0.3s;
-    /* Offset start time so this dot and the
-        other one don't twinkle in perfect unison — looks more organic. */
+/* ===== 5. ABOUT (bright section) ===== */
+.about-card { display: flex; align-items: center; gap: 1.1rem; }
+.about-card .avatar { width: 56px; height: 56px; border-radius: 50%; background: #cbb99a; flex-shrink: 0; }
+.quote { font-style: italic; margin: 1rem 0; padding-left: 1.1rem; border-left: 3px solid var(--sage); }
+
+/* ===== 6. CONTACT (bright section) ===== */
+form { margin-top: 1.3rem; display: grid; gap: 1rem; max-width: 480px; }
+form label { font-weight: 600; font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; color: #6d7d6f; }
+form input, form textarea {
+    width: 100%; padding: .7rem 1rem; border: 1px solid #cbb99a; border-radius: 4px;
+    background: #fff; font-family: inherit; outline: none;
+    transition: border-color .3s ease, box-shadow .3s ease;
+}
+form input:focus, form textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,172,110,.2); }
+
+/* ANIMATION 3 — button shine sweep.
+   A light diagonal streak (::after) sits just off-canvas to the
+   left and slides across on hover, like light catching foil. */
+form button[type="submit"] {
+    position: relative; overflow: hidden;
+    justify-self: start; padding: .7rem 1.8rem; border: none; border-radius: 4px;
+    background: #8a744f; color: #fff; text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 600; cursor: pointer; transition: background .3s ease, transform .2s ease;
+}
+form button[type="submit"]::after {
+    content: ''; position: absolute; top: 0; left: -60%;
+    width: 40%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+    transform: skewX(-20deg);
+}
+form button[type="submit"]:hover::after { animation: shine-sweep .8s ease forwards; }
+form button[type="submit"]:hover { background: #a3895c; }
+form button[type="submit"]:active { transform: scale(.98); }
+
+/* ===== 7. FOOTER ===== */
+footer { background: #0a0908; color: #776f61; text-align: center; padding: 1.6rem 1rem; margin-top: 3.5rem; font-size: .8rem; letter-spacing: 1px; }
+
+/* ===== 8. KEYFRAMES ===== */
+/* Rotates the gallery-card gradient ring a full turn, on a loop. */
+@keyframes spin-border { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Fades each sparkle dot in, briefly bigger/brighter, then out. */
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.6); } 50% { opacity: 1; transform: scale(1.2); } }
+
+/* Slides the button's light streak from off-left to off-right once
+   per hover, then stays put until the next hover (not looping). */
+@keyframes shine-sweep { to { left: 130%; } }
+
+/* Soft pulsing text-shadow behind the cursive logo, like a signature
+   catching candlelight — subtle, not distracting. */
+@keyframes logo-glow {
+    0%, 100% { text-shadow: 0 0 6px rgba(217,172,110,.25); }
+    50%      { text-shadow: 0 0 16px rgba(217,172,110,.55); }
 }
 
-.gallery-item-inner::after {
-    top: 60%;
-    left: 78%;
-    animation-delay: 1.6s;
-}
-
-/* Further offsetting alternating cards (2nd, 4th, 6th...) so an entire
-   row of cards doesn't sparkle in a visible, repeating pattern. */
-.gallery-item:nth-child(even) .gallery-item-inner::before {
-    animation-delay: 0.9s;
-}
-
-.gallery-item:nth-child(even) .gallery-item-inner::after {
-    animation-delay: 2.2s;
-}
-
-/* ==========================================
-   5. ABOUT CARD
-   ========================================== */
-
-.about-card {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    background: #26221d;
-    border: 1px solid #3a352d;
-    /* A faint border helps the card read
-        as a distinct surface against the near-identical dark page
-        background behind it. */
-    border-radius: 6px;
-    padding: 1.2rem 1.4rem;
-}
-
-.about-card .avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    /* Turns the square into a circle*/
-    background: #4a4038;
-    /* Placeholder color until a real photo is
-        added via background-image or an <img> tag. */
-    flex-shrink: 0;
-    /* Stops the circle from being squashed */
-}
-
-.about-card p {
-    color: #c9c3b6;
-    font-size: 0.9rem;
-}
-
-.about-card strong {
-    color: #f0ece2;
-    /* makes bolded words stand out
- 
-.quote {
-    font-style: italic; /* Italics is a familiar visual convention for
-        "this is someone's spoken/quoted words." */
-    font-size: 1rem;
-    margin: 1.2rem 0;
-    padding-left: 1.2rem;
-    border-left: 3px solid #8fa091;
-    /*  signal — sets the quote apart without needing
-        quotation marks or a background box. */
-    color: #c9c3b6;
-}
-
-/* ==========================================
-   6. CONTACT FORM
-   ========================================== */
-
-form {
-    margin-top: 1.5rem;
-    display: grid;
-    /* input pairs vertically with even
-        spacing, simpler than manually margining each field. */
-    gap: 1.1rem;
-    max-width: 500px;
-    /* Keeps input fields from stretching
-        uncomfortably */
-}
-
-form label {
-    font-weight: 600;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #8fa091;
-}
-
-    form input[type="text"],
-    form input[type="email"],
-    form textarea {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border: 1px solid #4a4038;
-        background-color: #26221d;
-        /* Matches the dark card color so the
-        input fields look intentional*/
-        color: #e8e3d9;
-        border-radius: 4px;
-        outline: none;
-        /* replaces custom box-shadow ring below, which
-        matches the site's style better. */
-        font-family: inherit;/ transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    form input::placeholder,
-    form textarea::placeholder {
-        color: #776f61;
-    }
-
-        form input:focus,
-        form textarea:focus {
-            border-color: #c9a876;
-            /* Clear visual confirmation of which field
-        is currently active — important for usability and
-        accessibility. */
-            box-shadow: 0 0 0 3px rgba(201, 168, 118, 0.15);
-            /* A soft glow
-        ring, gentler than a harsh browser-default blue outline. */
-        }
-
-        form button[type="submit"] {
-            justify-self: start;
-         /*this keeps the button its natural size
-        instead of spanning the whole form. */
-            padding: 0.75rem 1.9rem;
-            background-color: #8a744f;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            cursor: pointer;
-            
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        form button[type="submit"]:hover {
-            background-color: #a3895c;
-        }
-
-        form button[type="submit"]:active {
-            transform: scale(0.98);
-            
-        }
-  /* ==========================================
-   7. FOOTER
-   ========================================== */
- 
-footer {
-    background-color: #0f0e0d; /* Matches the header color */
-    color: #776f61;
-    text-align: center;
-    padding: 1.8rem 1rem;
-    margin-top: 4rem; /* Extra space above separates the footer from
-        whatever content precedes it (usually the contact form). */
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    border-top: 1px solid #26221d;
-}
- 
-/* ==========================================
-   8. KEYFRAMES
-   ========================================== */
- 
-/* Powers the rotating gradient border above — a full 360-degree turn,
-   looped forever. */
-@keyframes spin-border {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
- 
-/* Powers the sparkle dots — fades in, holds briefly at full brightness
-   and slightly larger size, then fades back out. */
-@keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(0.6); }
-    50%      { opacity: 1; transform: scale(1.2); }
-}
- 
-/* Accessibility: some visitors have "reduce motion" turned on at the
-   OS level (often due to vestibular disorders, motion sensitivity, or
-   just personal preference). This respects that setting by turning
-   off the spinning and twinkling entirely for them, without needing
-   any JavaScript to detect it. */
+/* Turns all motion off for visitors with reduced-motion preferences. */
 @media (prefers-reduced-motion: reduce) {
-    .gallery-item::before,
-    .gallery-item-inner::before,
-    .gallery-item-inner::after {
-        animation: none;
-    }
+    .gallery-item::before, .gallery-item-inner::before, .gallery-item-inner::after,
+    .logo-name, form button[type="submit"]::after { animation: none; }
 }
-  /* ==========================================
-   9. MOBILE RESPONSIVENESS
-   ========================================== */
- 
+
+/* ===== 9. MOBILE ===== */
 @media (max-width: 768px) {
-    .site-header h1,
-    .logo-name {
-        font-size: 1.5rem; /* The large letter-spaced heading would
-            wrap awkwardly or overflow on a narrow phone screen at
-            full size. */
-    }
- 
-    .gallery-grid {
-        grid-template-columns: 1fr 1fr; 
-        gap: 1rem; /* Slightly tighter gap to conserve limited screen
-            width. */
-    }
- 
-    form button[type="submit"] {
-        width: 100%; /* On mobile, a full-width button is easier to
-            tap accurately than a small fixed-size one. */
-    }
-}     
+    .logo-name { font-size: 2.2rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    form button[type="submit"] { width: 100%; }
+}
