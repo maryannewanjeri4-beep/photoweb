@@ -92,5 +92,37 @@ a:hover {
     width: 100%;
 
 }
-
+/* ==========================================
+   3. SECTION LAYOUT
+   ========================================== */
+ 
+section {
+    max-width: 1000px; /* Caps line length so paragraphs don't stretch
+        edge-to-edge on a wide monitor — long lines are hard to read. */
+    margin: 3.5rem auto; 
+    padding: 0 2rem; 
+}
+ 
+section h2 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    position: relative; /* Anchors the ::after accent line below. */
+    padding-bottom: 0.5rem;
+    color: #f0ece2;
+}
+ 
+/* A short accent line under each heading instead of a full horizontal
+   rule — draws the eye without cutting the section visually in half. */
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+     left: 0;
+    width: 46px;
+    height: 2px;
+    background-color: #c9a876;
+}
  
