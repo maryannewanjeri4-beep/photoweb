@@ -92,13 +92,12 @@ a:hover {
     width: 100%;
 
 }
-/* ==========================================
-   3. SECTION LAYOUT
+/* ==================================
+PHOTOS GRID
    ========================================== */
  
 section {
-    max-width: 1000px; /* Caps line length so paragraphs don't stretch
-        edge-to-edge on a wide monitor — long lines are hard to read. */
+    max-width: 1000px; 
     margin: 3.5rem auto; 
     padding: 0 2rem; 
 }
@@ -114,9 +113,7 @@ section h2 {
     color: #f0ece2;
 }
  
-/* A short accent line under each heading instead of a full horizontal
-   rule — draws the eye without cutting the section visually in half. */
-section h2::after {
+
     content: '';
     position: absolute;
     bottom: 0;
@@ -125,4 +122,140 @@ section h2::after {
     height: 2px;
     background-color: #c9a876;
 }
+
+  ==========================================
+   4. FAVORITE PHOTOS GRID
+   ========================================== */
  
+.gallery-grid {
+    list-style: none; 
+    display: grid;
+    /* auto-fit + minmax lets the grid decide how many columns fit:
+       on a wide screen you might get 4 columns, on mobile just 1 or 2,
+       with no media query needed for the column count itself. */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+}
+ 
+/* This outer element is only here to host the rotating gradient
+   border. Padding here creates the "ring" width — the gap between
+   the spinning gradient (::before) and the card content inside. */
+.gallery-item {
+    position: relative; /* So the ::before gradient is positioned
+        relative to this card, not the whole page. */
+    border-radius: 6px;
+    padding: 3px; /* This 3px gap is what makes the gradient visible
+        as a border rather than being fully hidden behind the card. */
+    background: #100f0d; /* Near-black backing so the gradient border
+        reads clearly against it, even where the gradient fades to
+        transparent. */
+    overflow: hidden; /* Clips the oversized ::before gradient (see
+        below) to the rounded corners of this card. */
+}
+ 
+/* The rotating "border": instead of an actual border property (which
+   can't animate a moving gradient), this is an oversized conic-gradient
+   sitting behind the card content, spinning continuously. Only a sliver
+   of it is visible at the card's edge because the inner card covers
+   the middle of it. */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: -40%; /* Deliberately oversized (larger than the card) so
+        that when it spins, there's no visible corner/edge of the
+        gradient square poking out — it always fully covers the card. */
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        #c9a876 20deg,     /* gold streak */
+        transparent 60deg,
+        transparent 300deg,
+        #8fa091 340deg,    /* sage streak, so two colors sweep by
+                               per rotation instead of one */
+        transparent 360deg
+    );
+    animation: spin-border 5s linear infinite; /* linear = constant
+        speed, no easing — a spinning effect should look mechanical,
+        not speed up/slow down like a bouncing ball would. */
+}
+ 
+/* The actual visible card sits in a separate inner wrapper, layered on
+   top of the spinning gradient. This is why the HTML needs an extra
+   wrapper div — without it, the image/text would be UNDER the
+   spinning gradient instead of on top of it. */
+.gallery-item-inner {
+    position: relative; /* Keeps this above the ::before gradient in
+        the stacking order, and anchors the sparkle dots below. */
+    background: #26221d;
+    border-radius: 4px;
+    overflow: hidden; /* Keeps the sparkle dots and the image's zoom
+        effect from spilling outside the card's rounded corners. */
+    display: flex;
+    flex-direction: column;
+}
+ 
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Crops the image to fill this exact box
+        without stretching or squashing it, regardless of the photo's
+        original aspect ratio. */
+    filter: grayscale(20%) brightness(0.9); /* Slightly desaturated
+        and dimmed by default, so the full-color hover state below
+        feels like a deliberate "reveal" rather than no change at all. */
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+ 
+.gallery-item:hover img {
+    filter: grayscale(0%) brightness(1); /* Full color on hover — a
+        reward for the visitor's interaction. */
+    transform: scale(1.03); /* A subtle zoom (not a big jump) implies
+        depth without feeling gimmicky. */
+}
+ 
+.gallery-item h3 {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 0.7rem 0;
+    color: #f0ece2;
+}
+ 
+/* Sparkle flecks: two tiny glowing dots per card. Using ::before and
+   ::after means zero extra HTML elements are needed — the "sparkle"
+   is pure CSS decoration, not real content, so it belongs in CSS
+   rather than cluttering the markup. */
+.gallery-item-inner::after,
+.gallery-item-inner::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fdf6e3;
+    border-radius: 50%; /* Makes the square into a dot. */
+    box-shadow: 0 0 6px 1px #fdf6e3; /* The soft glow around the dot —
+        without this it would just look like a small dot, not a spark
+        of light. */
+    opacity: 0; /* Starts invisible; the animation fades it in and out. */
+    animation: twinkle 3.5s ease-in-out infinite;
+}
+ 
+.gallery-item-inner::before {
+    top: 14%;
+    left: 20%;
+    animation-delay: 0.3s; /* Offset start time so this dot and the
+        other one don't twinkle in perfect unison — looks more organic. */
+}
+ 
+.gallery-item-inner::after {
+    top: 60%;
+    left: 78%;
+    animation-delay: 1.6s;
+}
+ 
+/* Further offsetting alternating cards (2nd, 4th, 6th...) so an entire
+   row of cards doesn't sparkle in a visible, repeating pattern. */
+.gallery-item:nth-child(even) .gallery-item-inner::before { animation-delay: 0.9s; }
+.gallery-item:nth-child(even) .gallery-item-inner::after { animation-delay: 2.2s; }
