@@ -241,3 +241,48 @@ section h2 {
    row of cards doesn't sparkle in a visible, repeating pattern. */
 .gallery-item:nth-child(even) .gallery-item-inner::before { animation-delay: 0.9s; }
 .gallery-item:nth-child(even) .gallery-item-inner::after { animation-delay: 2.2s; }
+
+/* ==========================================
+   5. ABOUT CARD
+   ========================================== */
+ 
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: #26221d; 
+    border: 1px solid #3a352d; /* A faint border helps the card read
+        as a distinct surface against the near-identical dark page
+        background behind it. */
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+}
+ 
+.about-card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%; /* Turns the square into a circle*/
+    background: #4a4038; /* Placeholder color until a real photo is
+        added via background-image or an <img> tag. */
+    flex-shrink: 0; /* Stops the circle from being squashed */
+}
+ 
+.about-card p {
+    color: #c9c3b6;
+    font-size: 0.9rem;
+}
+ 
+.about-card strong {
+    color: #f0ece2; /* makes bolded words stand out
+ 
+.quote {
+    font-style: italic; /* Italics is a familiar visual convention for
+        "this is someone's spoken/quoted words." */
+    font-size: 1rem;
+    margin: 1.2rem 0;
+    padding-left: 1.2rem;
+    border-left: 3px solid #8fa091; /*  signal — sets the quote apart without needing
+        quotation marks or a background box. */
+    color: #c9c3b6;
+}
+ 
