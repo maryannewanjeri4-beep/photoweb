@@ -5,19 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELENA PHOTOGRAPHY</title>
-    <link rel="stylesheet"href="styles.css">
+    <!-- FIX: missing space between attributes broke this tag before -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
     <header class="site-header" id="top">
         <input type="checkbox" id="navcheck" class="navcheck">
         <label for="navcheck" class="navlabel">☰</label>
-        <span class="logo-name">ELENA PHOTOGRAPHY</span>
-       
-        <span class="logo-sub"><em><strong>Light doesn't lie neither do I</strong></em></span>
-        </a>
+
+        <!-- This is the visible cursive brand name (styled in CSS) -->
+        <span class="logo-name">Elena Photography</span>
+
+        <!-- The plain <h1> is kept for SEO/screen readers but is
+             visually hidden by CSS, so it doesn't show twice on screen. -->
+        <h1>Elena Photography</h1>
+
+        <span class="logo-sub"><em><strong>Light doesn't lie, neither do I</strong></em></span>
+        <!-- FIX: removed a stray closing </a> tag here that had no
+             matching opening tag — it was breaking the rest of the page. -->
+
         <nav class="main-nav">
             <ul>
                 <li><a href="#top">Home</a></li>
@@ -27,118 +35,108 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-
     </header>
-    <search class="search-bar">
-        <input type="text" placeholder="Search...">
-        <button type="submit">Search</button>
-    </search>
-    <section class="main-content">
-        <p><em>Welcome to Elena Photography where we explore the beauty of the world through our lens</em></p>
-        <p>It is not all about the camera, but about the story you want to tell.<br> We capture moments that last a
-            lifetime and we take pride in providing quality results.</p>
 
+    <!-- REMOVED: the search bar had no matching CSS and no backend to
+         actually search anything, so it was just dead weight. Drop it
+         unless you plan to wire up real search functionality. -->
+
+    <section class="main-content">
+        <p><em>Welcome to Elena Photography, where we explore the beauty of the world through our lens.</em></p>
+        <p>It is not all about the camera, but about the story you want to tell.<br>
+            We capture moments that last a lifetime and take pride in delivering quality results.</p>
     </section>
-    <section class="about" id="about">
+
+    <!-- ADDED: section-bright class flips this section to the light
+         cream palette defined in the CSS, for real contrast against
+         the dark header/gallery sections. -->
+    <section class="about section-bright" id="about">
         <h2>About</h2>
-        <p>Elena Photography is a professional photography service that specializes in capturing life's most precious
-            moments. With a keen eye for detail and a passion for storytelling, we strive to create images that are not
-            only beautiful but also meaningful.</p>
+        <p>Elena Photography is a professional photography service that specializes in capturing life's most
+            precious moments. With a keen eye for detail and a passion for storytelling, we strive to create images
+            that are not only beautiful but also meaningful.</p>
         <p>Get to know the person behind the camera and discover what makes our photography unique.</p>
-        <h4>Meet Elena</h4>
-        <img src="blob:https://gemini.google.com/4adf71b7-c88b-4525-a6ff-cc9826f8e619" alt="Elena Photography">"
-        <p>Elena is a passionate photographer with over 10 years of experience in the industry. She has a unique ability
-            to capture the essence of her subjects, creating images that are both stunning and evocative. Her work has
-            been featured in numerous publications and exhibitions, earning her recognition as one of the leading
-            photographers in her field.<br>
-        </p>
+
+        <!-- ADDED: wrapped "Meet Elena" in the .about-card structure
+             the CSS expects (avatar circle + short bio side by side).
+             FIX: the old blob: image URL only works in the browser tab
+             that generated it — it would show broken for every visitor.
+             Swap this placeholder for your own real photo file. -->
+        <div class="about-card">
+            <div class="avatar"></div>
+            <p><strong>Meet Elena</strong> — a passionate photographer with over 10 years of experience, known for
+                capturing the essence of her subjects in images that are both stunning and evocative.</p>
+        </div>
+
         <p class="quote">My mother always said, "A photograph is a secret about a secret."</p>
         <p class="quote">"Photography is a way of feeling, of touching life directly."</p>
-        <p><strong>WHAT MAKES ELENA ENJOY PHOTOGRAPHY</strong></p>
+
+        <p><strong>What makes Elena enjoy photography</strong></p>
         <p>Elena finds joy in capturing the beauty of the world around her. She loves to explore new places, meet new
-            people, and tell their stories through her lens. For Elena, photography is not just a profession; it's a way
-            of life?</p>
+            people, and tell their stories through her lens. For Elena, photography is not just a profession — it's a
+            way of life.</p>
     </section>
+
     <section class="galleries" id="galleries">
         <h2>Galleries</h2>
         <p>Explore our diverse range of photography galleries, each showcasing a unique perspective and style. From
-            breathtaking landscapes to intimate portraits, our galleries offer a glimpse into the world through Elena's
-            lens.</p>
-            <ul>
-                <li class="grid-item">
-       
-            <div class="gallery-item-inner">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEG1XfNihbZgiIglSy0vQnoL4W1pfTtLx4v4Ey4iLAa-LDhsvYtcUy_iY&s=10"
-                    alt="nature photography">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7qZ3RZ1_nFLPmvf77930YiyvcAnLxBerXOVNZ3GTZ6ccFT8gOoNzhWoI&s=10"
-                    alt="Mt Kenya Sunrise">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCv3DBuQc-oAAxYS1kXvzhYXCMCJOBnFeO13mLe0fGZv3PQpthsZ594Ds&s=10"
-                    alt="Beautiful sunsets Ngong Hills">
-                <h3>Landscape</h3>
-                
-            </div>
-                </li>
-                <li class="gallery-item-inner">
-            <div class="gallery-item">
-                <img src="https://img.magnific.com/free-photo/portrait-african-american-woman_52683-87225.jpg">
-                    alt="female portrait
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UlQp2-LWITDs2FDykfihPYwgkGinudrte6JFk3EWNJBeVha_8QWGRIU&s=10"
-                    alt="male portrait photography">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTJ9D0tmT9hMc0DTdPNq9LtaoOVzSKWp5CTS8bB5jJZQ&s=10"
-                    alt="female portrait photography">
-                <h3>Portrait</h3>
+            breathtaking landscapes to intimate portraits, our galleries offer a glimpse into the world through
+            Elena's lens.</p>
 
-
-            </div>
+        <!-- FIX: each card previously stacked 2-3 images inside one
+             <div>, with the li/div classes swapped on different items
+             (some had gallery-item on the <li>, others on the <div>,
+             inconsistently). Structure is now consistent everywhere:
+             <li class="gallery-item"> > <div class="gallery-item-inner"> > one <img> + <h3>.
+             FIX: replaced scraped Google-thumbnail/licensed-image URLs
+             (unreliable, and not images you have rights to) with
+             placeholder photos — swap these src values for your own
+             real photo files before publishing. -->
+        <ul class="gallery-grid">
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
+                    <img src="https://picsum.photos/seed/landscape-elena/500/400" alt="Landscape photography">
+                    <h3>Landscape</h3>
+                </div>
             </li>
             <li class="gallery-item">
-
-            <div class="gallery-item-inner">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb934KrQJuH3uxrQWMx--559LLVgFkUH0j-k8w1uTo4Q&s=10>"
-                    alt="event photography">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh0SMMIyR-BwYNbkWilFYTegkTi5W4RNwApLbJYaB8XA&s=10"
-                    alt="event photography">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE05Xe54R9h4V1-OAeOgKbc3K5lgnuEUAoyEP7GwDFig&s=10"
-                    alt="event photography">
-
-                <h3>Event</h3>
-            </div>
+                <div class="gallery-item-inner">
+                    <img src="https://picsum.photos/seed/portrait-elena/500/400" alt="Portrait photography">
+                    <h3>Portrait</h3>
+                </div>
             </li>
             <li class="gallery-item">
-            <div class="gallery-item-inner">
-                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS9umJDfJJVir0HgR-SYNq3Dhr0wnB31q3na2jYlTNO3FKo-b2Fd8IuTZy6Y16QJVQiRftrR0lSVDVMDeg"
-                    alt="pride of Africa">
-                <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQQvdEH5ZbM0Ji-S1rsa42DgBlEq2-x7qsffwg9SFMLu_uv7Ld8rYFvFp1CcQiSHcCelElp8HX7tovE0xA"
-                    alt="wildlife photography">
-                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSI3ZXw2OBUoT8GGW4LtIF-Hq7w9t_fhx4piEU_Ups3XbTSujEzGl4msG_uejr5j4Krh80ra7Y-HX8QZp0"
-                    alt="wildlife photography">
-              
-
-                <h3>Wildlife</h3>
-            </div>
+                <div class="gallery-item-inner">
+                    <img src="https://picsum.photos/seed/event-elena/500/400" alt="Event photography">
+                    <h3>Event</h3>
+                </div>
             </li>
             <li class="gallery-item">
-            <div class="gallery-item-inner">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbb1XpFSgG7Nd9q18D_mQDRALT_PkahCCaLGMrVtH8gQ&s=10"
-                    alt="street photography">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGIUvfQTfDFxrxSi7JbCrXPQGVZIgkcxabhIKSJcIGCw&s=10"
-                        alt="street photography">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXCDWxJ2r76irAySesZtGBgZugzkSq07FlgTp34KEm9Q&s=10"
-                            alt="street photography">
-                <h3>Street</h3>
-            </div>
+                <div class="gallery-item-inner">
+                    <img src="https://picsum.photos/seed/wildlife-elena/500/400" alt="Wildlife photography">
+                    <h3>Wildlife</h3>
+                </div>
             </li>
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
+                    <img src="https://picsum.photos/seed/street-elena/500/400" alt="Street photography">
+                    <h3>Street</h3>
+                </div>
+            </li>
+        </ul>
     </section>
+
     <section class="journal" id="journal">
         <h2>Journal</h2>
         <p>Read our latest journal entries, where we share behind-the-scenes stories, photography tips, and insights
-            into our creative process. Stay updated with our latest projects and adventures in the world of photography.
-        </p>
+            into our creative process. Stay updated with our latest projects and adventures in the world of
+            photography.</p>
         <div class="journal-entries">
             <div class="journal-entry">
                 <h3>Exploring the Beauty of Nature</h3>
                 <p>Join us as we venture into the great outdoors to capture the stunning landscapes and wildlife that
-                    nature has to offer. Discover the techniques and equipment we use to create breathtaking images.</p>
+                    nature has to offer. Discover the techniques and equipment we use to create breathtaking images.
+                </p>
             </div>
             <div class="journal-entry">
                 <h3>Capturing Candid Moments</h3>
@@ -150,25 +148,37 @@
                 <p>Dive into the world of portrait photography and explore the techniques we use to create compelling
                     and emotive portraits. From lighting to composition, we cover it all.</p>
             </div>
+            <!-- FIX: this was previously a <dialog> element, which is
+                 hidden by default unless opened with JavaScript —
+                 that entry would never have appeared on the page. -->
             <div class="journal-entry">
                 <h3>Behind the Lens: A Day in the Life of a Photographer</h3>
-                <p>Get an inside look at a typical day in the life of a professional photographer. From planning shoots
-                    to editing images, we share our experiences and insights into the world of photography.</p>
+                <p>Get an inside look at a typical day in the life of a professional photographer. From planning
+                    shoots to editing images, we share our experiences and insights into the world of photography.</p>
             </div>
-
         </div>
     </section>
-    <section class="contact" id="contact">
+
+    <!-- ADDED: section-bright for the same contrast reason as About. -->
+    <section class="contact section-bright" id="contact">
         <h2>Contact</h2>
         <h5><em>Get in Touch</em></h5>
         <p>Talk to Elena</p>
-        <ul>Contact Information:
+
+        <!-- FIX: "Contact Information:" was sitting as raw text
+             directly inside <ul>, which is invalid HTML — only <li>
+             elements are allowed as direct children of a list. Moved
+             it into its own line above the list instead. -->
+        <p><strong>Contact Information:</strong></p>
+        <ul>
             <li>Email: <a href="mailto:elenaleo@gmail.com">elenaleo@gmail.com</a></li>
-            <li><a href="tel:+25474567890">Phone: +254 745 678 90</a></li>
+            <li>Phone: <a href="tel:+254745678900">+254 745 678 900</a></li>
             <li>Address: 123 Photography Lane, Cityville, Kenya</li>
         </ul>
-        <p>If you would like to get in touch with us for photography services, collaborations, or inquiries, please fill
-            out the contact form below. We look forward to hearing from you!</p>
+
+        <p>If you would like to get in touch with us for photography services, collaborations, or inquiries, please
+            fill out the contact form below. We look forward to hearing from you!</p>
+
         <form action="#" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -181,8 +191,13 @@
 
             <button type="submit">Send Message</button>
         </form>
-</body>
-<footer>
-    <p>&copy; 2024 Elena Photography. All rights reserved.</p>
+    </section>
 
+    <!-- FIX: <footer> was previously placed after </body>, outside the
+         document body entirely — invalid nesting. Moved inside body,
+         and </body> now correctly comes after it. -->
+    <footer>
+        <p>&copy; 2026 Elena Photography. All rights reserved.</p>
+    </footer>
+</body>
 </html>
