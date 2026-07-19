@@ -37,9 +37,7 @@ a:hover {
    ========================================== */
  
 .site-header {
-    background-color: #0f0e0d; /* Slightly darker than the page
-        background so the header reads as a distinct band, not just
-        more page. */
+    background-color: #0f0e0d;
     color: #ffffff;
     text-align: center;
     padding: 2.5rem 1rem; /* Generous vertical padding gives the header
@@ -51,22 +49,18 @@ a:hover {
 .site-header h1,
 .logo-name {
     font-size: 1.9rem;
-    letter-spacing: 4px; /* Wide letter spacing on all-caps text reads
-        as more elegant/editorial than tightly-packed capitals. */
-    font-weight: 300; /* A lighter weight (thin) suits the letter
-        spacing above — bold + wide spacing looks cluttered together. */
+    letter-spacing: 4px;
+    font-weight: 300; 
     text-transform: uppercase;
     margin-bottom: 0.75rem;
 }
  
 .main-nav ul {
     list-style: none; /* Removes the default bullet points — this is
-        a navigation bar, not a list of facts. */
+                      a navigation bar, not a list of facts. */
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* If the nav items don't fit on one line on a
-        small screen, they wrap instead of overflowing or shrinking
-        unreadably small. */
+    flex-wrap: wrap; 
     gap: 1.75rem;
 }
  
@@ -96,5 +90,7 @@ a:hover {
  
 .main-nav a:hover::after {
     width: 100%;
+
 }
+
  
