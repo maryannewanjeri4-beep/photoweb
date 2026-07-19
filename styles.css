@@ -131,43 +131,31 @@ section h2 {
     list-style: none; 
     display: grid;
     /* auto-fit + minmax lets the grid decide how many columns fit:
-       on a wide screen you might get 4 columns, on mobile just 1 or 2,
-       with no media query needed for the column count itself. */
+        */
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5rem;
 }
  
-/* This outer element is only here to host the rotating gradient
-   border. Padding here creates the "ring" width — the gap between
-   the spinning gradient (::before) and the card content inside. */
+/
 .gallery-item {
     position: relative; /* So the ::before gradient is positioned
         relative to this card, not the whole page. */
     border-radius: 6px;
-    padding: 3px; /* This 3px gap is what makes the gradient visible
-        as a border rather than being fully hidden behind the card. */
-    background: #100f0d; /* Near-black backing so the gradient border
-        reads clearly against it, even where the gradient fades to
-        transparent. */
+    padding: 3px; 
+    background: #100f0d; 
     overflow: hidden; /* Clips the oversized ::before gradient (see
         below) to the rounded corners of this card. */
 }
  
-/* The rotating "border": instead of an actual border property (which
-   can't animate a moving gradient), this is an oversized conic-gradient
-   sitting behind the card content, spinning continuously. Only a sliver
-   of it is visible at the card's edge because the inner card covers
-   the middle of it. */
+/
 .gallery-item::before {
     content: '';
     position: absolute;
     inset: -40%; /* Deliberately oversized (larger than the card) so
-        that when it spins, there's no visible corner/edge of the
-        gradient square poking out — it always fully covers the card. */
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        #c9a876 20deg,     /* gold streak */
+        that when it spins, 
+        
+       
+        
         transparent 60deg,
         transparent 300deg,
         #8fa091 340deg,    /* sage streak, so two colors sweep by
@@ -175,14 +163,11 @@ section h2 {
         transparent 360deg
     );
     animation: spin-border 5s linear infinite; /* linear = constant
-        speed, no easing — a spinning effect should look mechanical,
-        not speed up/slow down like a bouncing ball would. */
+        speed, no easing — a spinning effect should look mechanical,*/
+   
 }
  
-/* The actual visible card sits in a separate inner wrapper, layered on
-   top of the spinning gradient. This is why the HTML needs an extra
-   wrapper div — without it, the image/text would be UNDER the
-   spinning gradient instead of on top of it. */
+
 .gallery-item-inner {
     position: relative; /* Keeps this above the ::before gradient in
         the stacking order, and anchors the sparkle dots below. */
@@ -198,11 +183,10 @@ section h2 {
     width: 100%;
     height: 180px;
     object-fit: cover; /* Crops the image to fill this exact box
-        without stretching or squashing it, regardless of the photo's
-        original aspect ratio. */
+        without stretching or squashing it*/
     filter: grayscale(20%) brightness(0.9); /* Slightly desaturated
         and dimmed by default, so the full-color hover state below
-        feels like a deliberate "reveal" rather than no change at all. */
+        feels like a intentional "reveal" rather than no change at all. */
     transition: filter 0.4s ease, transform 0.4s ease;
 }
  
@@ -224,9 +208,7 @@ section h2 {
 }
  
 /* Sparkle flecks: two tiny glowing dots per card. Using ::before and
-   ::after means zero extra HTML elements are needed — the "sparkle"
-   is pure CSS decoration, not real content, so it belongs in CSS
-   rather than cluttering the markup. */
+   ::after means zero extra HTML elements are needed  */
 .gallery-item-inner::after,
 .gallery-item-inner::before {
     content: '';
