@@ -1,29 +1,34 @@
-* ==========================================
-   1. RESET & BASE STYLES
-   ========================================== */
-* {
+*==========================================1. RESET & BASE STYLES==========================================*/ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /*This is to ensure there is no overflow in the size of the box*/
 }
- 
+
 html {
     scroll-behavior: smooth;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1c1a17; /* Dark warm charcoal */
-    color: #e8e3d9; /* Warm off-white prose */
+    /*Clicking the nav bar ensures the page scrolls smoothly instead of just jumping to it*/
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;/*If the visitor system does not have segoe font it can fall back to similar looking fonts*/
+    background-color: #1c1a17;
+    /* Dark warm charcoal */
+    color: #e8e3d9;
+    /* Warm off-white prose for smooth contrast */
 }
- 
+
 body {
-    line-height: 1.6;
-    overflow-x: hidden;
+    line-height: 1.6;/*to improve the lines readability*/
+    overflow-x: hidden;/*/* Prevents an accidental horizontal scroll if any element slightly overflows*/
 }
- 
+
 a {
-    color: #8fa091; /* Brighter sage for contrast on dark bg */
+    color: #8fa091;
+    /* Brighter sage for contrast on dark bg */
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 a:hover {
-    color: #c9a876; /* Gold hover */
+    color: #c9a876;
+    /* Gold hover */
 }
