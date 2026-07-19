@@ -6,26 +6,48 @@
    ===================================================== */
 
 /* ===== 1. RESET & PALETTE ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/*styles for the whole page are setup first to prevent overlapping of styles later*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 :root {
-    --bg-dark: #14120f;     /* near-black sections */
-    --bg-bright: #f6ede0;   /* cream sections, for contrast */
-    --ink-light: #ece6da;   /* text on dark bg */
-    --ink-dark: #2b2620;    /* text on bright bg */
-    --gold: #d9ac6e;        /* brighter gold, pops against both bg's */
+    --bg-dark: #14120f;
+    /* (bg) background colour for dark sections near-black sections */
+    --bg-bright: #f6ede0;
+    /*  back ground colour for bright sectionscream sections, for contrast */
+    --ink-light: #ece6da;
+    /*  ink on dark bg text on dark bg */  
+    --ink-dark: #2b2620;
+    /*  ink on bright bg text on bright bg */
+    --gold: #d9ac6e;
+    /* brighter gold, pops against both bg's */
     --sage: #8fae93;
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;/* scroll behaviour for the whole page instead of just jumping*/
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     background: var(--bg-dark);
     color: var(--ink-light);
 }
-body { line-height: 1.6; overflow-x: hidden; }
-a { color: var(--sage); text-decoration: none; transition: color .3s ease; }
-a:hover { color: var(--gold); }
+
+body {
+    line-height: 1.6;
+    overflow-x: hidden;/*Prevents a horizontal scrollbar*/
+}
+
+a {/* This targets every clickable link in the page*/
+    color: var(--sage);
+    text-decoration: none;/* removes underline from links*/
+    transition: color .3s ease;
+}
+
+a:hover {
+    color: var(--gold);
+}
 
 /* ===== 2. HEADER + CURSIVE LOGO ===== */
 .site-header {
@@ -50,9 +72,10 @@ a:hover { color: var(--gold); }
    visually hidden so it doesn't duplicate the cursive logo on screen. */
 .site-header h1 {
     position: absolute;
-    width: 1px; height: 1px;
+    width: 1px;
+    height: 1px;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
 }
 
 .logo-sub {
@@ -64,25 +87,95 @@ a:hover { color: var(--gold); }
     text-transform: uppercase;
 }
 
-.main-nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.6rem; margin-top: 1.5rem; }
-.main-nav a { position: relative; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; color: #d6d0c4; padding-bottom: .3rem; }
-.main-nav a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s ease; }
-.main-nav a:hover::after { width: 100%; }
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    margin-top: 1.5rem;
+}
+
+.main-nav a {
+    position: relative;
+    font-size: .8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #d6d0c4;
+    padding-bottom: .3rem;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition:
+        width .3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
 
 /* ===== 3. SECTION LAYOUT ===== */
-section { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; }
-section h2 { position: relative; font-size: 1.6rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.3rem; padding-bottom: .5rem; }
-section h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 44px; height: 2px; background: var(--gold); }
+section {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+section h2 {
+    position: relative;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1.3rem;
+    padding-bottom: .5rem;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44px;
+    height: 2px;
+    background: var(--gold);
+}
 
 /* Bright sections invert the palette (dark text on cream) for real
    contrast between sections rather than one flat dark tone throughout. */
-.section-bright { background: var(--bg-bright); color: var(--ink-dark); border-radius: 8px; padding: 2rem; }
-.section-bright h2 { color: var(--ink-dark); }
+.section-bright {
+    background: var(--bg-bright);
+    color: var(--ink-dark);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.section-bright h2 {
+    color: var(--ink-dark);
+}
 
 /* ===== 4. GALLERY — spinning border + sparkle ===== */
-.gallery-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.3rem; }
+.gallery-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.3rem;
+}
 
-.gallery-item { position: relative; border-radius: 6px; padding: 3px; background: #0d0c0a; overflow: hidden; }
+.gallery-item {
+    position: relative;
+    border-radius: 6px;
+    padding: 3px;
+    background: #0d0c0a;
+    overflow: hidden;
+}
 
 /* ANIMATION 1 — rotating gradient ring.
    An oversized conic-gradient spins behind the card; only the
@@ -95,88 +188,258 @@ section h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 
     animation: spin-border 5s linear infinite;
 }
 
-.gallery-item-inner { position: relative; background: #26221d; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
-.gallery-item img { width: 100%; height: 170px; object-fit: cover; filter: grayscale(20%) brightness(.9); transition: filter .4s ease, transform .4s ease; }
-.gallery-item:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.03); }
-.gallery-item h3 { text-align: center; padding: .6rem 0; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; font-size: .9rem; }
+.gallery-item-inner {
+    position: relative;
+    background: #26221d;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    filter: grayscale(20%) brightness(.9);
+    transition: filter .4s ease,
+        transform .4s ease;
+}
+
+.gallery-item:hover img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.03);
+}
+
+.gallery-item h3 {
+    text-align: center;
+    padding: .6rem 0;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: .9rem;
+}
 
 /* ANIMATION 2 — sparkle flecks.
    Two ::before/::after dots per card fade in/out on staggered
    delays, purely via CSS (no extra HTML elements needed). */
-.gallery-item-inner::before, .gallery-item-inner::after {
-    content: ''; position: absolute; width: 4px; height: 4px; border-radius: 50%;
-    background: #fdf6e3; box-shadow: 0 0 6px 1px #fdf6e3; opacity: 0;
+.gallery-item-inner::before,
+.gallery-item-inner::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fdf6e3;
+    box-shadow: 0 0 6px 1px #fdf6e3;
+    opacity: 0;
     animation: twinkle 3.5s ease-in-out infinite;
 }
-.gallery-item-inner::before { top: 14%; left: 20%; animation-delay: .3s; }
-.gallery-item-inner::after { top: 60%; left: 78%; animation-delay: 1.6s; }
-.gallery-item:nth-child(even) .gallery-item-inner::before { animation-delay: .9s; }
-.gallery-item:nth-child(even) .gallery-item-inner::after { animation-delay: 2.2s; }
+
+.gallery-item-inner::before {
+    top: 14%;
+    left: 20%;
+    animation-delay: .3s;
+}
+
+.gallery-item-inner::after {
+    top: 60%;
+    left: 78%;
+    animation-delay: 1.6s;
+}
+
+.gallery-item:nth-child(even) .gallery-item-inner::before {
+    animation-delay: .9s;
+}
+
+.gallery-item:nth-child(even) .gallery-item-inner::after {
+    animation-delay: 2.2s;
+}
 
 /* ===== 5. ABOUT (bright section) ===== */
-.about-card { display: flex; align-items: center; gap: 1.1rem; }
-.about-card .avatar { width: 56px; height: 56px; border-radius: 50%; background: #cbb99a; flex-shrink: 0; }
-.quote { font-style: italic; margin: 1rem 0; padding-left: 1.1rem; border-left: 3px solid var(--sage); }
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.about-card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #cbb99a;
+    flex-shrink: 0;
+}
+
+.quote {
+    font-style: italic;
+    margin: 1rem 0;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--sage);
+}
 
 /* ===== 6. CONTACT (bright section) ===== */
-form { margin-top: 1.3rem; display: grid; gap: 1rem; max-width: 480px; }
-form label { font-weight: 600; font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; color: #6d7d6f; }
-form input, form textarea {
-    width: 100%; padding: .7rem 1rem; border: 1px solid #cbb99a; border-radius: 4px;
-    background: #fff; font-family: inherit; outline: none;
-    transition: border-color .3s ease, box-shadow .3s ease;
+form {
+    margin-top: 1.3rem;
+    display: grid;
+    gap: 1rem;
+    max-width: 480px;
 }
-form input:focus, form textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217,172,110,.2); }
+
+form label {
+
+    font-weight: 600;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6d7d6f;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: .7rem 1rem;
+    border: 1px solid #cbb99a;
+    border-radius: 4px;
+    background: #fff;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(217, 172, 110, .2);
+}
 
 /* ANIMATION 3 — button shine sweep.
    A light diagonal streak (::after) sits just off-canvas to the
    left and slides across on hover, like light catching foil. */
 form button[type="submit"] {
-    position: relative; overflow: hidden;
-    justify-self: start; padding: .7rem 1.8rem; border: none; border-radius: 4px;
-    background: #8a744f; color: #fff; text-transform: uppercase; letter-spacing: 2px;
-    font-weight: 600; cursor: pointer; transition: background .3s ease, transform .2s ease;
+    position: relative;
+    overflow: hidden;
+    justify-self: start;
+    padding: .7rem 1.8rem;
+    border: none;
+    border-radius: 4px;
+    background: #8a744f;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .3s ease, transform .2s ease;
 }
+
 form button[type="submit"]::after {
-    content: ''; position: absolute; top: 0; left: -60%;
-    width: 40%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .5), transparent);
     transform: skewX(-20deg);
 }
-form button[type="submit"]:hover::after { animation: shine-sweep .8s ease forwards; }
-form button[type="submit"]:hover { background: #a3895c; }
-form button[type="submit"]:active { transform: scale(.98); }
+
+form button[type="submit"]:hover::after {
+    animation: shine-sweep .8s ease forwards;
+}
+
+form button[type="submit"]:hover {
+    background: #a3895c;
+}
+
+form button[type="submit"]:active {
+    transform: scale(.98);
+}
 
 /* ===== 7. FOOTER ===== */
-footer { background: #0a0908; color: #776f61; text-align: center; padding: 1.6rem 1rem; margin-top: 3.5rem; font-size: .8rem; letter-spacing: 1px; }
+footer {
+    background: #0a0908;
+    color: #776f61;
+    text-align: center;
+    padding: 1.6rem 1rem;
+    margin-top: 3.5rem;
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
 
 /* ===== 8. KEYFRAMES ===== */
 /* Rotates the gallery-card gradient ring a full turn, on a loop. */
-@keyframes spin-border { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-border {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* Fades each sparkle dot in, briefly bigger/brighter, then out. */
-@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.6); } 50% { opacity: 1; transform: scale(1.2); } }
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(.6);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
 
 /* Slides the button's light streak from off-left to off-right once
    per hover, then stays put until the next hover (not looping). */
-@keyframes shine-sweep { to { left: 130%; } }
+@keyframes shine-sweep {
+    to {
+        left: 130%;
+    }
+}
 
 /* Soft pulsing text-shadow behind the cursive logo, like a signature
    catching candlelight — subtle, not distracting. */
 @keyframes logo-glow {
-    0%, 100% { text-shadow: 0 0 6px rgba(217,172,110,.25); }
-    50%      { text-shadow: 0 0 16px rgba(217,172,110,.55); }
+
+    0%,
+    100% {
+        text-shadow: 0 0 6px rgba(217, 172, 110, .25);
+    }
+
+    50% {
+        text-shadow: 0 0 16px rgba(217, 172, 110, .55);
+    }
 }
 
 /* Turns all motion off for visitors with reduced-motion preferences. */
 @media (prefers-reduced-motion: reduce) {
-    .gallery-item::before, .gallery-item-inner::before, .gallery-item-inner::after,
-    .logo-name, form button[type="submit"]::after { animation: none; }
+
+    .gallery-item::before,
+    .gallery-item-inner::before,
+    .gallery-item-inner::after,
+    .logo-name,
+    form button[type="submit"]::after {
+        animation: none;
+    }
 }
 
 /* ===== 9. MOBILE ===== */
 @media (max-width: 768px) {
-    .logo-name { font-size: 2.2rem; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-    form button[type="submit"] { width: 100%; }
+    .logo-name {
+        font-size: 2.2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    form button[type="submit"] {
+        width: 100%;
+    }
 }
