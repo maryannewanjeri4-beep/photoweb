@@ -17,12 +17,6 @@ The webpage includes:
     -Evidence of previous work by the photographer
     -A few journal entries
     - Contact details
-### IMAGES USED
-- ![Landscape](images/images (2).JPG)
-- ![wildlife](images/capybara.jiff)
-- ![street](images/street.jpg)
-- ![potrait](images/download.jpg)
-- ![event](images/event.jpg)
 
 ### TECHNOLOGIES USED
      Github
