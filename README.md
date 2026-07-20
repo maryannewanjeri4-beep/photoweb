@@ -11,12 +11,18 @@ It shows past evidence of their work,what their motivation is and how an interes
 
 ###  STRUCTURE OF THE PROJECT
 The webpage includes: 
-    1.a styled name-logo
-    2.hero section of the photographer 
-    3.additional information about the photographer(e.g their motivation)
-    4.Evidence of previous work by the photographer
-    5.A few journal entries
-    Contact details
+    -a styled name-logo
+    -hero section of the photographer 
+    -additional information about the photographer(e.g their motivation)
+    -Evidence of previous work by the photographer
+    -A few journal entries
+    - Contact details
+### IMAGES USED
+- ![Landscape](images/images (2).JPG)
+- ![wildlife](images/capybara.jiff)
+- ![street](images/street.jpg)
+- ![potrait](images/download.jpg)
+- ![event](images/event.jpg)
 
 ### TECHNOLOGIES USED
      Github
