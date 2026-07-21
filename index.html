@@ -95,6 +95,208 @@
         <ul class="gallery-grid">
             <li class="gallery-item">
                 <div class="gallery-item-inner">
+                        <img src="images/images (2).JPG" alt="Landscape photography">
+                    <h3>Landscape</h3>
+                </div>
+            </li>
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
+                    <img src="images/download.jfif" alt="Portrait photography">
+                    <h3>Portrait</h3>
+                </div>
+            </li>
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
+                    <img src="images/event.jpg" alt="Event photography">
+                    <h3>Event</h3>
+                </div>
+            </li>
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
+                    <img src="images/capybara.jfif" alt="Wildlife photography">
+                    <h3>Wildlife</h3>
+                </div>
+            </li>
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
+                    <img src="images/street.jpg" alt="Street photography">
+                    <h3>Street</h3>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="journal" id="journal">
+        <h2>Journal</h2>
+        <p>Read our latest journal entries, where we share behind-the-scenes stories, photography tips, and insights
+            into our creative process. Stay updated with our latest projects and adventures in the world of
+            photography.</p>
+        <div class="journal-entries">
+            <div class="journal-entry">
+                <h3>Exploring the Beauty of Nature</h3>
+                <p>Join us as we venture into the great outdoors to capture the stunning landscapes and wildlife that
+                    nature has to offer. Discover the techniques and equipment we use to create breathtaking images.
+                </p>
+            </div>
+            <div class="journal-entry">
+                <h3>Capturing Candid Moments</h3>
+                <p>Learn how to capture authentic and candid moments in your photography. We share tips on how to
+                    connect with your subjects and create images that tell a story.</p>
+            </div>
+            <div class="journal-entry">
+                <h3>The Art of Portrait Photography</h3>
+                <p>Dive into the world of portrait photography and explore the techniques we use to create compelling
+                    and emotive portraits. From lighting to composition, we cover it all.</p>
+            </div>
+            <!-- FIX: this was previously a <dialog> element, which is
+                 hidden by default unless opened with JavaScript —
+                 that entry would never have appeared on the page. -->
+            <div class="journal-entry">
+                <h3>Behind the Lens: A Day in the Life of a Photographer</h3>
+                <p>Get an inside look at a typical day in the life of a professional photographer. From planning
+                    shoots to editing images, we share our experiences and insights into the world of photography.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADDED: section-bright for the same contrast reason as About. -->
+    <section class="contact section-bright" id="contact">
+        <h2>Contact</h2>
+        <h5><em>Get in Touch</em></h5>
+        <p>Talk to Elena</p>
+
+        <!-- FIX: "Contact Information:" was sitting as raw text
+             directly inside <ul>, which is invalid HTML — only <li>
+             elements are allowed as direct children of a list. Moved
+             it into its own line above the list instead. -->
+        <p><strong>Contact Information:</strong></p>
+        <ul>
+            <li>Email: <a href="mailto:elenaleo@gmail.com">elenaleo@gmail.com</a></li>
+            <li>Phone: <a href="tel:+254745678900">+254 745 678 900</a></li>
+            <li>Address: 123 Photography Lane, Cityville, Kenya</li>
+        </ul>
+
+        <p>If you would like to get in touch with us for photography services, collaborations, or inquiries, please
+            fill out the contact form below. We look forward to hearing from you!</p>
+
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- FIX: <footer> was previously placed after </body>, outside the
+         document body entirely — invalid nesting. Moved inside body,
+         and </body> now correctly comes after it. -->
+    <footer>
+        <p>&copy; 2026 Elena Photography. All rights reserved.</p>
+    </footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELENA PHOTOGRAPHY</title>
+    <!-- FIX: missing space between attributes broke this tag before -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header" id="top">
+        <input type="checkbox" id="navcheck" class="navcheck">
+        <label for="navcheck" class="navlabel">☰</label>
+
+        <!-- This is the visible cursive brand name (styled in CSS) -->
+        <span class="logo-name">Elena Photography</span>
+
+        <!-- The plain <h1> is kept for SEO/screen readers(BLIND) but is
+             visually hidden by CSS, so it doesn't show twice on screen. -->
+        <h1>Elena Photography</h1>
+
+        <span class="logo-sub"><em><strong>Light doesn't lie, neither do I</strong></em></span>
+        <!-- FIX: removed a stray closing </a> tag here that had no
+             matching opening tag — it was breaking the rest of the page. -->
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#galleries">Galleries</a></li>
+                <li><a href="#journal">Journal</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- REMOVED: the search bar had no matching CSS and no backend to
+         actually search anything, so it was just dead weight. Drop it
+         unless you plan to wire up real search functionality. -->
+
+    <section class="main-content">
+        <p><em>Welcome to Elena Photography, where we explore the beauty of the world through our lens.</em></p>
+        <p>It is not all about the camera, but about the story you want to tell.<br>
+            We capture moments that last a lifetime and take pride in delivering quality results.</p>
+    </section>
+
+    <!-- ADDED: section-bright class flips this section to the light
+         cream palette defined in the CSS, for real contrast against
+         the dark header/gallery sections. -->
+    <section class="about section-bright" id="about">
+        <h2>About</h2>
+        <p>Elena Photography is a professional photography service that specializes in capturing life's most
+            precious moments. With a keen eye for detail and a passion for storytelling, we strive to create images
+            that are not only beautiful but also meaningful.</p>
+        <p>Get to know the person behind the camera and discover what makes our photography unique.</p>
+
+        <!-- ADDED: wrapped "Meet Elena" in the .about-card structure
+             the CSS expects (avatar circle + short bio side by side).
+             FIX: the old blob: image URL only works in the browser tab
+             that generated it — it would show broken for every visitor.
+             Swap this placeholder for your own real photo file. -->
+        <div class="about-card">
+            <div class="avatar"></div>
+            <p><strong>Meet Elena</strong> — a passionate photographer with over 10 years of experience, known for
+                capturing the essence of her subjects in images that are both stunning and evocative.</p>
+        </div>
+
+        <p class="quote">My mother always said, "A photograph is a secret about a secret."</p>
+        <p class="quote">"Photography is a way of feeling, of touching life directly."</p>
+
+        <p><strong>What makes Elena enjoy photography</strong></p>
+        <p>Elena finds joy in capturing the beauty of the world around her. She loves to explore new places, meet new
+            people, and tell their stories through her lens. For Elena, photography is not just a profession — it's a
+            way of life.</p>
+    </section>
+
+    <section class="galleries" id="galleries">
+        <h2>Galleries</h2>
+        <p>Explore our diverse range of photography galleries, each showcasing a unique perspective and style. From
+            breathtaking landscapes to intimate portraits, our galleries offer a glimpse into the world through
+            Elena's lens.</p>
+
+        <!-- FIX: each card previously stacked 2-3 images inside one
+             <div>, with the li/div classes swapped on different items
+             (some had gallery-item on the <li>, others on the <div>,
+             inconsistently). Structure is now consistent everywhere:
+             <li class="gallery-item"> > <div class="gallery-item-inner"> > one <img> + <h3>.
+             FIX: replaced scraped Google-thumbnail/licensed-image URLs
+             (unreliable, and not images you have rights to) with
+             placeholder photos — swap these src values for your own
+             real photo files before publishing. -->
+        <ul class="gallery-grid">
+            <li class="gallery-item">
+                <div class="gallery-item-inner">
                     <img src="images/images (2).JPG" alt="Landscape photography">
                     <h3>Landscape</h3>
                 </div>
